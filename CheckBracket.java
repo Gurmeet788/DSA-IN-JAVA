@@ -39,7 +39,7 @@ public class CheckBracket {
         Scanner scanner = new Scanner(System.in);
         while (true){
             String exp = scanner.nextLine();
-            if (validBarket(exp)){
+            if (validBracket(exp)){
                 System.out.println("Succuful");
             }else {
                 System.out.println(count);
