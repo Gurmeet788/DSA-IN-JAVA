@@ -1,5 +1,5 @@
 import java.util.*;
-public class ValidAnogram {
+public class ValidAnagram {
     public static void main(String[] args) {
         String s,t;
         Scanner SC=new Scanner(System.in);
