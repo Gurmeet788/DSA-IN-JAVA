@@ -1,10 +1,16 @@
 public class LinkListArray {
     public static void main(String[] args) {
         int array[] = {1,2,8,7,9};
+
         Node head = covertArr(array);
-        printFull(head);
+        //printFull(head);
+
         int length = lengthList(head);
         System.out.println(length);
+
+        int target = 7;
+        int element = search(head, target);
+        System.out.println(element);
     }
 
     private static void printFull(Node head){  // for printing linked list
@@ -15,12 +21,24 @@ public class LinkListArray {
         }
     }
 
+    private static int search(Node head, int target){
+        Node temp = head;
+        int count = 1;
+        while (temp != null) {
+            if (temp.getData() == target) {
+                return count;
+            }else{
+                temp = temp.gettNext();
+                count++;
+            }
+        }
+        return 0;
+    }
 
     private static int lengthList(Node head){ //To find length of linked list 
         Node temp = head;
         int count = 0;
         while(temp != null){
-            System.out.println(temp.getData());
             temp = temp.gettNext();
             count++;
         }
