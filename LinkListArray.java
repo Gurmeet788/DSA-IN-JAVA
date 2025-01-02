@@ -5,12 +5,9 @@ public class LinkListArray {
         Node head = covertArr(array);
         //printFull(head);
 
-        int length = lengthList(head);
-        System.out.println(length);
-
-        int target = 7;
-        int element = search(head, target);
-        System.out.println(element);
+        
+        head = removeValueNode(head, 8);
+        printFull(head);
     }
 
     private static void printFull(Node head){  // for printing linked list
@@ -45,7 +42,6 @@ public class LinkListArray {
         return count;
     }
 
-
     private static Node covertArr(int array[]){  //Convert Array in in linkList
         Node head = new Node(array[0]);
         Node mover = head;
@@ -55,6 +51,107 @@ public class LinkListArray {
             mover.SetNext(temp);
             mover = temp;
         }
+        return head;
+    }
+
+    private static Node removeHead(Node head){ //Remove Head (first node)
+
+        if(head == null){
+            return head;
+        }
+        head = head.gettNext();
+        return head;
+    }
+
+    private static Node removeTail(Node head){  // remove the last node
+        
+        if (head == null || head.gettNext() == null) { // linkedlist is empty or if linkedlist have one element
+
+            return null;
+        }
+        Node temp = head;
+        while (temp.gettNext().gettNext() != null) {
+            
+            temp = temp.gettNext();
+        }
+        temp.SetNext(null);
+
+        return head;
+    }
+
+    private static Node removeKth(Node head , int k){  // remove kth node but there is one problem if k is greater than length of linkedlist then it will not remove any node give error
+
+        if (head == null) {
+            return head;
+        }
+
+        if (k == 1) {
+            removeHead(head);
+        }
+
+        Node temp = head;
+
+        for(int i = 1; i < k; i++){
+
+            if (i == k - 1) {
+                temp.SetNext(temp.gettNext().gettNext());
+            }
+            temp = temp.gettNext();
+        }
+
+        return head;
+
+    }
+
+    public static Node removeKthNode(Node head, int k) { // remove kth node with error handling
+        if (head == null) {
+            return head;
+        }
+
+        if (k == 1) {
+            return removeHead(head);
+        }
+
+        Node temp = head;
+        int count = 0;
+        Node prev = null;
+        while (temp != null) {
+            count++;
+            if (count == k) {
+                prev.SetNext(temp.gettNext());
+                break;
+            }
+            prev = temp;
+            temp = temp.gettNext();
+            
+        }
+
+        return head;
+    }
+
+    public static Node removeValueNode(Node head, int value) { // remove value node 
+
+        Node temp = head;
+        Node prev = null;
+
+        if (head == null) {
+            return head;
+        }
+
+        if (head.getData() == value) {
+            return removeHead(head);
+        }
+
+        while (temp != null) {
+            if (temp.getData() == value) {
+                prev.SetNext(temp.gettNext());
+                break;
+            }
+            prev = temp;
+            temp = temp.gettNext();
+            
+        }
+
         return head;
     }
 }
