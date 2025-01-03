@@ -4,9 +4,7 @@ public class LinkListArray {
 
         Node head = covertArr(array);
         //printFull(head);
-
-        
-        head = removeValueNode(head, 8);
+        head = insertLast(head, 10);
         printFull(head);
     }
 
@@ -152,6 +150,23 @@ public class LinkListArray {
             
         }
 
+        return head;
+    }
+
+    public static Node insertHead(Node head, int value){   // Insert at first
+        Node newNode = new Node(value, head);
+        return newNode;
+    }
+
+    public static Node insertLast(Node head, int value){
+        Node newNode = new Node(value);
+        Node temp = head;
+        
+        while (temp.gettNext() != null) {
+
+            temp = temp.gettNext();            
+        }
+        temp.SetNext(newNode);
         return head;
     }
 }
