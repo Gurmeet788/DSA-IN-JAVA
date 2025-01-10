@@ -44,8 +44,7 @@ public class StackArray {
 
     public static void main(String[] args) {
 
-        StackArrary stack = new StackArrary();
-
+        StackArray stack = new StackArray();
         stack.push(5);
         stack.push(10);
         System.out.println(stack.top());
